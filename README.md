@@ -24,10 +24,10 @@ To install the application from the source, follow these steps:
 
 ## Usage 🖥
 
-### Tab 1<br>
+### Program interface<br>
 <img src="https://github.com/curious-grapes/parametric-propeller/blob/main/img/screenshot_1.png" width="600"><br>
 
-### Tab 2<br>
+### Designed propeller<br>
 <img src="https://github.com/curious-grapes/parametric-propeller/blob/main/img/screenshot_2.png" width="600"><br>
 
 
