@@ -1,5 +1,5 @@
 /build/
 /.vscode
+/other/
 /dist/
 /__pycache__/
-/other/
