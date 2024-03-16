@@ -1,0 +1,63 @@
+import numpy as np
+
+points = [
+    (1.000000, 0.002000),
+    (0.950000, 0.009300),
+    (0.900000, 0.016200),
+    (0.800000, 0.028800),
+    (0.700000, 0.039600),
+    (0.600000, 0.048500),
+    (0.500000, 0.055000),
+    (0.400000, 0.058900),
+    (0.300000, 0.059500),
+    (0.200000, 0.055700),
+    (0.150000, 0.051400),
+    (0.100000, 0.044700),
+    (0.075000, 0.040000),
+    (0.050000, 0.033900),
+    (0.025000, 0.025100),
+    (0.012500, 0.018600),
+    (0.000000, 0.000000),
+    (0.012500, -0.018600),
+    (0.025000, -0.025100),
+    (0.050000, -0.033900),
+    (0.075000, -0.040000),
+    (0.100000, -0.044700),
+    (0.150000, -0.051400),
+    (0.200000, -0.055700),
+    (0.300000, -0.059500),
+    (0.400000, -0.058900),
+    (0.500000, -0.055000),
+    (0.600000, -0.048500),
+    (0.700000, -0.039600),
+    (0.800000, -0.028800),
+    (0.900000, -0.016200),
+    (0.950000, -0.009300),
+    (1.000000, -0.002000)
+]
+# Scale parameter
+custom_number = 1
+# Cylinder radius
+cylinder_radius = 1
+# blade length
+blade_length = 1.5
+# angle of attack
+angle_attack = 60
+# Number of blades
+num_copies = 10
+# multiply list by scale parameter
+modified_tuple_list = [(item[0] * custom_number, item[1] * custom_number) for item in points]
+# get initial height when blade is staight
+cylinder_height = modified_tuple_list[0][0] 
+
+# new height of cylinder based on the height of tilted blades
+rforfo = cylinder_height * np.cos(np.radians(angle_attack))
+# create cylinder
+cylinder = cq.Workplane("XY").circle(cylinder_radius).extrude(rforfo)
+
+
+
+# create blade from foil data and extrude by specified length
+r = cq.Workplane("left", origin=(-5, 0, 0)).spline(modified_tuple_list).close().extrude("last")
+show_object(cylinder)
+show_object(r)
